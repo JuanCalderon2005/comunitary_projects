@@ -1,7 +1,14 @@
+import styled from "styled-components"
+
+const TitleH3 = styled.h3`
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-weight: 700;
+`
 
 const TitleHeader = () => {
   return (
-    <h3>VolunteerConnect</h3>
+    <TitleH3>VolunteerConnect</TitleH3>
   )
 }
 
