@@ -1,11 +1,15 @@
 'use client'
 import HeaderComponent from '@/ui/Organisms/HomePage/Header'
+import MainHome from '@/ui/Organisms/HomePage/MainHome'
 import React from 'react'
 
 export const HomePageTeplate = () => {
   return (
-    <div className="h-screen w-full">
-        <HeaderComponent />
-    </div>
+    <>
+      <HeaderComponent />
+      <div className="flex-grow flex items-center justify-center">
+        <MainHome />
+      </div>
+    </>
   )
 }

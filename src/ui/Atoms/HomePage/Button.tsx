@@ -1,20 +1,20 @@
 import React from 'react'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonCompontetProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    className?: string
     label?: string
     onClick?: () => void
-    type?: 'button' | 'submit' | 'reset'
 }
 
-const HomePageButton = ({
+const ButtonCompontet = ({
+    className,
     label,
     onClick,
-    type = 'button',
     ...props
-}: ButtonProps) => {
+}: ButtonCompontetProps) => {
     return (
         <button
-            type={type}
+            className={className}
             onClick={onClick}
             {...props}
         >
@@ -23,4 +23,4 @@ const HomePageButton = ({
     )
 }
 
-export default HomePageButton
+export default ButtonCompontet

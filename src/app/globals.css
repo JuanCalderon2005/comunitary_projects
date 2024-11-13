@@ -5,6 +5,8 @@
 body {
     font-family: 'Roboto', sans-serif;  
     background: linear-gradient(to bottom, #e0f7ff, #f9f9ff) no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 html{
