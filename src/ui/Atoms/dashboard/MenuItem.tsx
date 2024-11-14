@@ -24,16 +24,16 @@ const MenuItemContainer = styled.div<{ isActive: boolean }>`
   ${({ isActive }) =>
     isActive
       ? css`
-          background-color: #d1d5db; /* Fondo gris claro si está activo */
+          background-color: #d1d5db;
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         `
       : css`
-          background-color: transparent; /* Sin fondo si no está activo */
+          background-color: transparent;
           box-shadow: none;
 
           &:hover {
-            color: gray; /* Texto color índigo al hacer hover */
-          }
+            color: gray; 
+           }
         `}
 `;
 
