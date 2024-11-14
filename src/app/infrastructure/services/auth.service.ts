@@ -1,7 +1,6 @@
 import { PAuth } from "@/app/core/application/ports/auth.port";
 import { HttpClient } from "../utils/client-http";
 import {
-  IRequestRegisterUsersDto,
   IResponseRegisterUsersDto,
 } from "@/app/core/application/dto/auth";
 import { ILoginRequest } from "@/app/core/application/dto/auth/request-login.dto";
@@ -23,11 +22,11 @@ export class AuthService implements PAuth {
   }
 
   async register(
-    request: IRequestRegisterUsersDto
+    request: FormData
   ): Promise<IResponseRegisterUsersDto> {
     return await this.clientHttp.post<
       IResponseRegisterUsersDto,
-      IRequestRegisterUsersDto
-    >(`${this.basePath}/register`, request);
+      FormData
+    >('users', request, true);
   }
 }
