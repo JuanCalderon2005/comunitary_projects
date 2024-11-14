@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const PrimaryButton = styled.button`
+const StyledButton = styled.button`
   padding: 0.5rem 1rem;
   background-color: black;
   color: white;
@@ -13,5 +14,14 @@ const PrimaryButton = styled.button`
     background-color: #333;
   }
 `;
+
+interface PrimaryButtonProps {
+  onClick: () => void;
+  label: string;
+}
+
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({ onClick, label }) => {
+  return <StyledButton onClick={onClick}>{label}</StyledButton>;
+};
 
 export default PrimaryButton;

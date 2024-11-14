@@ -1,8 +1,10 @@
+'use client'
 import React from 'react';
 import PrimaryButton from '@/ui/Atoms/HomePage/PrimaryButton';
 import SecondaryButton from '@/ui/Atoms/HomePage/SecondaryButton';
 import TitleHeader from '@/ui/Atoms/HomePage/TitleHeader';
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 const ContainerHeader = styled.div`
   display: flex;
@@ -19,12 +21,19 @@ const ContainerButtons = styled.div`
 `;
 
 const HeaderComponent = () => {
+  const router = useRouter();
   return (
     <ContainerHeader>
       <TitleHeader />
       <ContainerButtons>
-        <SecondaryButton>Inicia Sesión</SecondaryButton>
-        <PrimaryButton>Regístrate</PrimaryButton>
+        <SecondaryButton
+          label="Iniciar sesión"
+          onClick={() => router.push('/login')} 
+        />
+        <PrimaryButton 
+          label="Registrarse"
+          onClick={() => router.push('/register')}
+        />
       </ContainerButtons>
     </ContainerHeader>
   );
