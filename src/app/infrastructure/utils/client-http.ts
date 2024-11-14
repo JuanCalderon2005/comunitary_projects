@@ -6,7 +6,7 @@ const defaultBaseUrl = "https://communnityvolunteering-production.up.railway.app
 interface Session extends DefaultSession {
   user: {
       id?: string;
-      token?: string;
+      access_token?: string;
       name?: string | null;
       email?: string | null;
       image?: string | null;
@@ -61,7 +61,7 @@ export class HttpClient {
   }
 
   private async getHeader(formData: boolean = false) {
-    const session = (await getServerSession(authOptions)) as Session | null;
+    const session = (await getServerSession(authOptions)) as Session;
   
     const headers: HeadersInit = {};
 
@@ -69,8 +69,8 @@ export class HttpClient {
       headers["Content-Type"] = "application/json";
     } 
   
-    if (session?.user?.token) {
-      headers["Authorization"] = `Bearer ${session.user.token}`;
+    if (session?.user?.access_token) {
+      headers["Authorization"] = `Bearer ${session.user.access_token}`;
     }
   
     return headers;
