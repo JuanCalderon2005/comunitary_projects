@@ -1,15 +1,14 @@
-"use client";
+'use client';
 import { ILoginRequest } from "@/app/core/application/dto/auth/request-login.dto";
-import {
-  ErrorResponse,
-  FieldError
-} from "@/app/core/application/dto/common/error-response.dto";
-import { FormField } from "@/ui/Molecules/common/InputField";
+import { ErrorResponse, FieldError } from "@/app/core/application/dto/common/error-response.dto";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import styled from 'styled-components';
+import FormField from "@/ui/Molecules/common/InputField";
+import { ForgotPassword } from "@/ui/Atoms/auth/ForgotPassword";
 
 const loginSchema = yup.object().shape({
   email: yup
@@ -21,6 +20,49 @@ const loginSchema = yup.object().shape({
     .min(8, "La contraseña debe tener al menos 8 caracteres")
     .required("La contraseña es obligatoria"),
 });
+
+
+
+const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 40%;
+  background-color: white;
+`;
+
+const Title = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: black;
+`;
+
+const Description = styled.p`
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+`;
+
+
+
+const SubmitButton = styled.button`
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #333;
+  }
+`;
 
 export const LoginForm = () => {
   const {
@@ -74,40 +116,32 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
-      <form
-        className="bg-white rounded-lg shadow-lg p-8 w-full max-w-sm"
-        onSubmit={handleSubmit(handleLogin)}
-      >
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
-          Iniciar Sesión
-        </h2>
+    <FormWrapper onSubmit={handleSubmit(handleLogin)}>
+      <Title>Iniciar Sesión</Title>
+      <Description>Ingresa tus credenciales para acceder a tu cuenta</Description>
 
-        <FormField<ILoginRequest>
-          control={control}
-          type="email"
-          label="Correo Electrónico"
-          name="email"
-          error={errors.email}
-          placeholder="Ingresa tu correo"
-        />
+      <FormField<ILoginRequest>
+        control={control}
+        type="email"
+        label="Correo Electrónico"
+        name="email"
+        error={errors.email}
+        placeholder="Ingresa tu correo"
+      />
 
-        <FormField<ILoginRequest>
-          control={control}
-          type="password"
-          label="Contraseña"
-          name="password"
-          error={errors.password}
-          placeholder="Ingresa tu contraseña"
-        />
-        
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-300"
-        >
-          Iniciar Sesión
-        </button>
-      </form>
-    </div>
+      <FormField<ILoginRequest>
+        control={control}
+        type="password"
+        label="Contraseña"
+        name="password"
+        error={errors.password}
+        placeholder="Ingresa tu contraseña"
+      />
+
+      <SubmitButton type="submit">
+        Iniciar Sesión
+      </SubmitButton>
+      <ForgotPassword />
+    </FormWrapper>
   );
 };
