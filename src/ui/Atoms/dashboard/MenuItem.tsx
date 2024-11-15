@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -12,29 +12,13 @@ interface MenuItemProps {
 const MenuItemContainer = styled.div<{ isActive: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Alinea a la izquierda */
   gap: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
   cursor: pointer;
-  width: 210px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  color: ${({ isActive }) => (isActive ? '#1f2937' : '#4b5563')}; /* Texto gris oscuro si está activo, más claro si no */
-  
-  ${({ isActive }) =>
-    isActive
-      ? css`
-          background-color: #d1d5db;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        `
-      : css`
-          background-color: transparent;
-          box-shadow: none;
-
-          &:hover {
-            color: gray; 
-           }
-        `}
+  width: 100%; /* Ocupa todo el ancho disponible */
+  background-color: ${({ isActive }) => (isActive ? '#d1d5db' : 'transparent')};
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
 `;
 
 const IconContainer = styled.span`

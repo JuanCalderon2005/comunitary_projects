@@ -19,6 +19,7 @@ const ContainerMain = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   gap: 1rem;
   height: 85vh;
 `;
