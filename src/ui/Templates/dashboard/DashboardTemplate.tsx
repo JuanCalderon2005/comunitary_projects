@@ -20,7 +20,7 @@ interface IProsp {
 const PageContainer = styled.div`
     margin: auto;
     width: 95%;
-    height: 100%;
+    height: auto;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -36,10 +36,12 @@ const HeaderProjects = styled.div`
 const BodyProjects = styled.div`
     padding: 10px;
     background-color: white;
+    height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 7px;
+    margin-top: 10px;
 `;
 
 const H2 = styled.h2`

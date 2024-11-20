@@ -1,8 +1,8 @@
-import { RegisterService } from "@/app/infrastructure/services/auth-register.service";
+import { UserService } from "@/app/infrastructure/services/user.service";
 import { NextResponse } from "next/server";
 
 
-const useRegisterService= new RegisterService();
+const useRegisterService= new UserService();
 
 export async function POST(req:Request) {
   try {
